@@ -13,32 +13,16 @@ import {AppService} from "../app.service";
 })
 export class CurrentDayComponent implements OnInit {
 
-
   unitMetrics: string = 'ca';
-  searchFocus: boolean = false;
   realTime: any = moment.now();
-  loaded: boolean = false;
+  loading: boolean = false;
 
-  city: City = new City();
-  cities: City[] = [];
+  city: City = null;
   dayForecast: any = null;
 
-  constructor(private appService: AppService) { }
 
-
-  searchCity() {
-    this.appService.getCities(this.city.name)
-     .subscribe(
-        data => this.cities =  data,
-        err => {console.log('Aconteceu um erro!')}
-      );
-  }
-
-  selectCity(city) {
-    this.loaded = false;
-    this.city = city;
-
-    this.appService.selectCity(this.city);
+  getForecast() {
+    this.loading = true;
 
     this.appService.getForecast(this.city.lat, this.city.lon, this.unitMetrics, true)
       .subscribe(
@@ -51,16 +35,25 @@ export class CurrentDayComponent implements OnInit {
             icon: 'wi-forecast-io-' + currently.icon,
             temp: parseInt(currently.temperature),
             humidity: parseInt(currently.humidity) * 100,
-            mind: parseInt(currently.windSpeed),
+            wind: parseInt(currently.windSpeed),
             isToday: true
           }
         },
-        err => {console.log('Aconteceu um erro!', err)},
-        () => {this.loaded = true;}
+        err => {console.log('Error', err)},
+        () => {this.loading = false;}
       )
   }
 
+  constructor(private appService: AppService) { }
+
   ngOnInit() {
+    this.appService.citySelected.subscribe(
+      (city) => {
+        this.city = city;
+        this.getForecast();
+      }
+    );
+
     setInterval(() => {
       this.realTime = moment.now();
     }, 1000);

@@ -13,6 +13,7 @@ import {AppService} from "./app.service";
 import { HeaderComponent } from './header/header.component';
 import { SelectTextDirective } from './util/selecttext.directive';
 import { OtherDaysComponent } from './other-days/other-days.component';
+import { SearchCityComponent } from './search-city/search-city.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { OtherDaysComponent } from './other-days/other-days.component';
     CurrentDayComponent,
     HeaderComponent,
     SelectTextDirective,
-    OtherDaysComponent
+    OtherDaysComponent,
+    SearchCityComponent
   ],
   imports: [
     BrowserModule,

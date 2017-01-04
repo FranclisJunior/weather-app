@@ -1,37 +1,10 @@
-<section class="search-city">
-  <div class="container">
-    <form>
-      <input selectText
-             type="text"
-             name="field"
-             class="search"
-             minlength="3"
-             placeholder="Search city..."
-             [(ngModel)]="city.name"
-             (ngModelChange)="searchCity()"
-             (focus)="searchFocus = true"
-             (blur)="searchFocus = false"
-             required
-             autocomplete="off">
+<div class="load" *ngIf="loading"></div>
 
-      <ul class="search-list"
-          [ngClass]="{'open' : searchFocus && city.name}">
-        <li class="item" *ngFor="let cityTemp of cities" (click)="selectCity(cityTemp)">
-          <span>{{cityTemp.name}}</span>
-        </li>
-      </ul>
-    </form>
-  </div>
-</section><!-- End search-city -->
-
-
-<div class="load" *ngIf="dayForecast && !loaded"></div>
-
-<section class="daily-forecast" *ngIf="dayForecast && loaded">
+<section class="daily-forecast" *ngIf="dayForecast !== null && !loading">
   <div class="container">
     <h2 class="item today">
       <span style="padding: 10px"> <i class="fa fa-calendar"></i>{{ dayForecast.day | amDateFormat: 'dddd'}} </span>
-      <span style="padding: 10px" *ngIf="dayForecast.isToday"> <i class="fa fa-clock-o"></i>{{ realTime | amDateFormat:'HH:ss' }} </span>
+      <span style="padding: 10px" *ngIf="dayForecast.isToday"> <i class="fa fa-clock-o"></i>{{ realTime | amDateFormat:'HH:mm:ss' }} </span>
     </h2>
 
     <div class="box-daily">
@@ -52,8 +25,8 @@
         <h3 class="status">{{ dayForecast.status }}</h3>
 
         <ul class="list-status">
-          <li class="status">Umidade: {{ dayForecast.humidity }}%</li>
-          <li class="status">Vento: {{ dayForecast.mind }} km/h</li>
+          <li class="status">Humidity: {{ dayForecast.humidity }}%</li>
+          <li class="status">Wind: {{ dayForecast.wind }} km/h</li>
         </ul>
       </div>
     </div><!-- End box-daily -->

@@ -12,13 +12,13 @@ import {City} from "../model/City";
 })
 export class OtherDaysComponent implements OnInit {
 
-  loaded: boolean = false;
+  loading: boolean = false;
 
   city: City = null;
   daysForecast: any = null;
 
   getDaysForecast() {
-    this.loaded = false;
+    this.loading = true;
 
     this.appService.getForecast(this.city.lat, this.city.lon, 'ca', false)
       .subscribe(
@@ -36,7 +36,7 @@ export class OtherDaysComponent implements OnInit {
           }
         },
         err => {console.log('Aconteceu um erro!', err)},
-        () => {this.loaded = true;}
+        () => {this.loading = false;}
       )
   }
 
@@ -49,7 +49,6 @@ export class OtherDaysComponent implements OnInit {
         this.getDaysForecast();
       }
     );
-
   }
 
 }

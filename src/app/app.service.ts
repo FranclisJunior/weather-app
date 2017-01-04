@@ -18,11 +18,11 @@ export class AppService {
 
   citySelected = new EventEmitter<City>();
 
-  selectCity(city) {
+  setCity(city) {
     this.citySelected.emit(city);
   }
 
-  getCities(input){
+  getCities(input) {
     let url = 'https://autocomplete.wunderground.com/aq?query=' + input + "&cb=JSONP_CALLBACK";
     return this.jsonp.get(url)
       .map(res => JSON.parse(res.text()).RESULTS)
@@ -41,11 +41,11 @@ export class AppService {
   }
 
   private buildForecastUrl(lat, long, unit, currently) {
-    let url = 'https://api.darksky.net/forecast/' + this.DARK_SKY_KEY + '/' + lat + ',' + long + '?lang=pt&units=' + unit;
+    let url = 'https://api.darksky.net/forecast/' + this.DARK_SKY_KEY + '/' + lat + ',' + long + '?lang=en&units=' + unit;
     if (currently) {
-      url += '&exclude[minutely, hourly, daily, alerts, flags]';
+      url += '&exclude[minutely,hourly,daily,alerts,flags]';
     } else {
-      url += '&exclude[currently, minutely, hourly, alerts, flags]';
+      url += '&exclude[currently,minutely,hourly,alerts,flags]';
     }
     url += '&callback=JSONP_CALLBACK';
 
@@ -54,7 +54,7 @@ export class AppService {
 
   private handleError(error: any) {
     let err = error.message || 'Server error';
-    console.error('Ocorreu um erro', error);
+    console.error('Error', error);
     return Observable.throw(err);
   }
 
