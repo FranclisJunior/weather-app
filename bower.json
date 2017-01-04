@@ -1,0 +1,21 @@
+{
+  "name": "weather-app",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Franclis Galdino <juniorfranclis@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "e2e",
+    "dist"
+  ],
+  "dependencies": {
+    "weather-icons": "^2.0.10",
+    "font-awesome": "^4.7.0",
+  }
+}

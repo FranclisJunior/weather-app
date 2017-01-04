@@ -1,0 +1,17 @@
+<div class="container">
+
+  <section *ngIf="loaded">
+    <div class="forecast-days">
+      <div class="box-day" *ngFor="let day of daysForecast">
+        <h4 class="title">{{ day.date | amDateFormat: 'dd' }}</h4>
+        <div class="icon">
+          <i class="wi {{ day.icon }}"></i>
+        </div>
+        <div class="temp-status">
+          <div class="max">{{ day.temperatureMax }}°</div>
+          <div class="min">{{ day.temperatureMin }}°</div>
+        </div>
+      </div>
+    </div><!-- End forecast-days -->
+  </section>
+</div>
