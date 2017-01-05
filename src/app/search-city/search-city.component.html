@@ -1,25 +1,23 @@
 <section class="search-city">
-  <div class="container">
-    <form>
-      <input selectText
-             type="text"
-             name="field"
-             class="search"
-             minlength="3"
-             placeholder="Search city..."
-             [(ngModel)]="city.name"
-             (ngModelChange)="searchCity()"
-             (focus)="searchFocus = true"
-             (blur)="searchFocus = false"
-             required
-             autocomplete="off">
+  <form>
+    <input selectText
+           type="text"
+           name="field"
+           class="search"
+           minlength="3"
+           placeholder="Search city..."
+           [(ngModel)]="city.name"
+           (ngModelChange)="searchCity()"
+           (focus)="searchFocus = true"
+           (blur)="searchFocus = false"
+           required
+           autocomplete="off">
 
-      <ul class="search-list"
-          [ngClass]="{'open' : searchFocus && city.name}">
-        <li class="item" *ngFor="let cityTemp of cities" (click)="selectCity(cityTemp)">
-          <span>{{cityTemp.name}}</span>
-        </li>
-      </ul>
-    </form>
-  </div>
+    <ul class="search-list"
+        [ngClass]="{'open' : searchFocus && city.name}">
+      <li class="item" *ngFor="let cityTemp of cities" (click)="selectCity(cityTemp)">
+        <span>{{cityTemp.name}}</span>
+      </li>
+    </ul>
+  </form>
 </section><!-- End search-city -->

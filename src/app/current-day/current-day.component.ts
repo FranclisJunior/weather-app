@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 
-import 'rxjs/add/operator/do';
 import * as moment from 'moment';
 
 import {City} from "../model/City";
@@ -27,6 +26,9 @@ export class CurrentDayComponent implements OnInit {
     this.appService.getForecast(this.city.lat, this.city.lon, this.unitMetrics, true)
       .subscribe(
         data => {
+
+          this.appService.generateForecastChart(data.hourly.data);
+
           let currently =  data.currently;
           this.dayForecast = {
             day:  moment(currently.time * 1000),
@@ -34,7 +36,7 @@ export class CurrentDayComponent implements OnInit {
             status: currently.summary,
             icon: 'wi-forecast-io-' + currently.icon,
             temp: parseInt(currently.temperature),
-            humidity: parseInt(currently.humidity) * 100,
+            humidity: currently.humidity,
             wind: parseInt(currently.windSpeed),
             isToday: true
           }

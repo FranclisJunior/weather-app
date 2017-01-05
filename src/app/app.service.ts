@@ -18,8 +18,14 @@ export class AppService {
 
   citySelected = new EventEmitter<City>();
 
+  loadChart = new EventEmitter();
+
   setCity(city) {
     this.citySelected.emit(city);
+  }
+
+  generateForecastChart(data) {
+    this.loadChart.emit(data);
   }
 
   getCities(input) {

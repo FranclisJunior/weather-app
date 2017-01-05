@@ -3,13 +3,13 @@
 <section class="daily-forecast" *ngIf="dayForecast !== null && !loading">
   <div class="container">
     <h2 class="item today">
-      <span style="padding: 10px"> <i class="fa fa-calendar"></i>{{ dayForecast.day | amDateFormat: 'dddd'}} </span>
-      <span style="padding: 10px" *ngIf="dayForecast.isToday"> <i class="fa fa-clock-o"></i>{{ realTime | amDateFormat:'HH:mm:ss' }} </span>
+      <i class="fa fa-calendar"><span style="padding: 10px; font-family: Montserrat"> {{ dayForecast.day | amDateFormat: 'dddd'}}</span></i>
+      <i class="fa fa-clock-o"><span style="padding: 10px; font-family: Montserrat">{{ realTime | amDateFormat:'HH:mm:ss' }}</span></i>
     </h2>
 
     <div class="box-daily">
       <div class="item -icon">
-        <i class="wi wi-lunar-eclipse" [ngClass]="dayForecast.icon"></i>
+        <i class="wi" [ngClass]="dayForecast.icon"></i>
       </div>
 
       <div class="item -temp">

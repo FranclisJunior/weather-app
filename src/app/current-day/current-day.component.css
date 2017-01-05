@@ -55,7 +55,7 @@
   margin: 0 10px;
 }
 .box-daily >.item.-icon {
-  font-size: 6.5rem;
+  font-size: 5.5rem;
 }
 @media (max-width: 870px) {
   .box-daily >.item.-icon {
@@ -67,8 +67,8 @@
   }
 }
 .box-daily >.item.-temp {
-  font-size: 10rem;
-  line-height: 10rem;
+  font-size: 8rem;
+  line-height: 9rem;
   margin-right: 0;
 }
 .unit-items {
