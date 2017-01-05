@@ -68,11 +68,6 @@ export class DayForecastChartComponent implements OnInit {
     let hours = [];
     let temps = [];
 
-  /*  for (let i = 0; i < 24; i ++) {
-      hours.push(moment(data[i]['time'] * 1000).format('HH:mm'));
-      temps.push(parseInt( data[i]['temperature']));
-    }*/
-
     let count = 0;
     for ( let i = 0; i < 13; i++ ) {
       if ( i == 0 ) { count = i;}
